@@ -4,8 +4,6 @@
 ;; Let binding
 [ "let" ] @keyword
 
-(let_bindings name: (symbol) @variable)
-
 ;; Apply
 (apply_stmt . (symbol) @function)
 
@@ -32,20 +30,20 @@
 [ "def" ] @keyword
 
 (function_definition name: (symbol) @function)
-(function_definition parameters: (parameters (symbol) @variable.parameter))
 (function_definition docstring: (string) @comment)
 
 ;; Macro definitions
 [ "mac" ] @keyword
 
 (macro_definition name: (symbol) @function)
-(macro_definition parameters: (parameters (symbol) @variable.parameter))
 (macro_definition docstring: (string) @comment)
 
 ;; Lambda 
 [ "\\" ] @keyword
 
-(lambda_stmt parameters: (parameters (symbol) @variable.parameter))
+;; Decons bindings.
+(decons_stmt (symbol) @variable.parameter)
+(decons_item (symbol) @variable.parameter)
 
 ;; Atoms
 (char) @constant.character
@@ -64,11 +62,14 @@
 (unquote) @operator
 (unquote_splice) @operator
 
-;; Highlight nil t as constant
+;; Highlight wildcard as constant
+(wildcard) @constant.builtin
+
+;; Highlight nil as constant
 [ "nil" ] @constant.builtin
 
 ;; Highlight as t as boolean constant
 [ "T" ] @constant.builtin.boolean
 
 ;; Highlight variable names used in anamorphic macros.
-[ "it" ] @variable.builtin
+[ "it" "self" ] @variable.builtin
