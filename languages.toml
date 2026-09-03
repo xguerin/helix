@@ -5248,7 +5248,7 @@ indent = { tab-width = 2, unit = "  " }
 
 [[grammar]]
 name = "slisp"
-source = { git = "https://git.sr.ht/~xguerin/tree-sitter-slisp", rev = "e14f62169145d9661c1ab16790f527770d157bb8"}
+source = { git = "https://git.sr.ht/~xguerin/tree-sitter-slisp", rev = "056e6d5a8940d08be172fb99a8f2d4e8fcea4042"}
 
 [[language]]
 name = "nearley"
